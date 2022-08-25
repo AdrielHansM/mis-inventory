@@ -9,14 +9,6 @@ Route.group(() => {
   Route.post('/auth/register', 'AuthController.register')
   Route.post('/auth/login', 'AuthController.login')
 
-  Route.resource('threads', 'ThreadsController').apiOnly().middleware({
-    store: 'auth',
-    update: 'auth',
-    destroy: 'auth'
-  })
-  
-  Route.resource('threads.replies', 'RepliesController').only(['store'])
-  
   Route.group(() => {
     Route.get('/', 'ManufacturersController.index')
     Route.post('/', 'ManufacturersController.store').middleware('auth')
@@ -47,9 +39,7 @@ Route.group(() => {
   Route.group(() => {
     Route.get('/', 'TransactionsController.index')
     Route.post('/', 'TransactionsController.store').middleware('auth')
-    Route.get('/search', 'TransactionsController.search')
     Route.get('/:id', 'TransactionsController.show')
-    Route.patch('/:id', 'TransactionsController.update').middleware('auth')
     Route.delete('/:id', 'TransactionsController.destroy').middleware('auth')
   }).prefix('transaction')
 
