@@ -1,0 +1,303 @@
+{
+  "root": [
+    {
+      "domain": "root",
+      "name": "drive.local.serve",
+      "pattern": "/uploads/*",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "Closure",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "",
+      "pattern": "/",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "Closure",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "",
+      "pattern": "/api/ping",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "Closure",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "",
+      "pattern": "/api/auth/register",
+      "methods": [
+        "POST"
+      ],
+      "handler": "AuthController.register",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "",
+      "pattern": "/api/auth/login",
+      "methods": [
+        "POST"
+      ],
+      "handler": "AuthController.login",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "threads.index",
+      "pattern": "/api/threads",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "ThreadsController.index",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "threads.store",
+      "pattern": "/api/threads",
+      "methods": [
+        "POST"
+      ],
+      "handler": "ThreadsController.store",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "threads.show",
+      "pattern": "/api/threads/:id",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "ThreadsController.show",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "threads.update",
+      "pattern": "/api/threads/:id",
+      "methods": [
+        "PUT",
+        "PATCH"
+      ],
+      "handler": "ThreadsController.update",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "threads.destroy",
+      "pattern": "/api/threads/:id",
+      "methods": [
+        "DELETE"
+      ],
+      "handler": "ThreadsController.destroy",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "threads.replies.store",
+      "pattern": "/api/threads/:thread_id/replies",
+      "methods": [
+        "POST"
+      ],
+      "handler": "RepliesController.store",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "products.index",
+      "pattern": "/api/products",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "ProductsController.index",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "products.store",
+      "pattern": "/api/products",
+      "methods": [
+        "POST"
+      ],
+      "handler": "ProductsController.store",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "products.show",
+      "pattern": "/api/products/:id",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "ProductsController.show",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "products.update",
+      "pattern": "/api/products/:id",
+      "methods": [
+        "PUT",
+        "PATCH"
+      ],
+      "handler": "ProductsController.update",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "products.destroy",
+      "pattern": "/api/products/:id",
+      "methods": [
+        "DELETE"
+      ],
+      "handler": "ProductsController.destroy",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "customers.index",
+      "pattern": "/api/customers",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "CustomersController.index",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "customers.store",
+      "pattern": "/api/customers",
+      "methods": [
+        "POST"
+      ],
+      "handler": "CustomersController.store",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "customers.show",
+      "pattern": "/api/customers/:id",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "CustomersController.show",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "customers.update",
+      "pattern": "/api/customers/:id",
+      "methods": [
+        "PUT",
+        "PATCH"
+      ],
+      "handler": "CustomersController.update",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "customers.destroy",
+      "pattern": "/api/customers/:id",
+      "methods": [
+        "DELETE"
+      ],
+      "handler": "CustomersController.destroy",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "transactions.index",
+      "pattern": "/api/transactions",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "TransactionsController.index",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "transactions.store",
+      "pattern": "/api/transactions",
+      "methods": [
+        "POST"
+      ],
+      "handler": "TransactionsController.store",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "transactions.show",
+      "pattern": "/api/transactions/:id",
+      "methods": [
+        "GET",
+        "HEAD"
+      ],
+      "handler": "TransactionsController.show",
+      "middleware": []
+    },
+    {
+      "domain": "root",
+      "name": "transactions.update",
+      "pattern": "/api/transactions/:id",
+      "methods": [
+        "PUT",
+        "PATCH"
+      ],
+      "handler": "TransactionsController.update",
+      "middleware": [
+        "auth"
+      ]
+    },
+    {
+      "domain": "root",
+      "name": "transactions.destroy",
+      "pattern": "/api/transactions/:id",
+      "methods": [
+        "DELETE"
+      ],
+      "handler": "TransactionsController.destroy",
+      "middleware": [
+        "auth"
+      ]
+    }
+  ]
+}
