@@ -4,10 +4,7 @@ import {
   column,
   beforeSave,
   BaseModel,
-  hasMany,
-  HasMany,
 } from '@ioc:Adonis/Lucid/Orm'
-import Thread from '../thread/Thread'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -37,7 +34,4 @@ export default class User extends BaseModel {
       user.password = await Hash.make(user.password)
     }
   }
-
-  @hasMany(() => Thread)
-  public threads: HasMany<typeof Thread>
 }
