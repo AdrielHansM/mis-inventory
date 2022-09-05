@@ -13,6 +13,7 @@ export default class ProductValidator {
     type: schema.string(),
     category: schema.string(),
     dosage: schema.number(),
+    image_url: schema.string.optional(),
   })
 
   public messages: CustomMessages = {}

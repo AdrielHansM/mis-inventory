@@ -10,7 +10,7 @@ export default class extends BaseSchema {
       table.string('transaction_type').notNullable()
       table.double('total_amount').notNullable()
       table.date('transaction_date').notNullable()         
-    
+      table.string('transaction_status').notNullable()
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

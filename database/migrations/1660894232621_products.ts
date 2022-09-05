@@ -12,6 +12,7 @@ export default class extends BaseSchema {
       table.string('type').notNullable()
       table.string('category').notNullable()
       table.integer('dosage').notNullable()
+      table.string('image_url').notNullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

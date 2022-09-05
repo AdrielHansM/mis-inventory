@@ -25,6 +25,9 @@ export default class Product extends BaseModel {
   @column()
   public dosage: number
 
+  @column()
+  public imageUrl: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

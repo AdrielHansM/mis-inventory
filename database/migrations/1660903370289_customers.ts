@@ -13,6 +13,7 @@ export default class extends BaseSchema {
       table.string('discipline').nullable()
       table.string('contact').nullable()
       table.string('email').nullable()
+      table.boolean('is_deleted').defaultTo(0)
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
