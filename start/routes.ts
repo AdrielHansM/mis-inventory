@@ -1,9 +1,10 @@
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', ()=> {return {message: "Welcome to MIS Inventory"}})
+Route.get('/', () => { return { message: "Welcome to MIS Inventory" } })
 
 Route.group(() => {
-  Route.get('/ping', async ()=> {return {response: 'pong'}})
+  Route.get('/ping', async () => { return { response: 'pong' } })
+  Route.get('/auth/accounts', 'AuthController.accounts')
   Route.post('/auth/register', 'AuthController.register')
   Route.post('/auth/login', 'AuthController.login')
 
