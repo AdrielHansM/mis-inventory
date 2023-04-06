@@ -7,7 +7,7 @@ import CreateTransactionValidator from 'App/Validators/transaction/CreateTransac
 
 export default class TransactionsController {
 
-  public async index({request, response} : HttpContextContract ) {
+  public async index({ request, response }: HttpContextContract) {
     const page = request.input('page', 1)
     const perPage = request.input('per_page', 25)
 
@@ -21,10 +21,10 @@ export default class TransactionsController {
       .preload('payment')
       .paginate(page, perPage)
 
-    return response.ok({data: transactions})
+    return response.ok({ data: transactions })
   }
 
-  public async store({request, response} : HttpContextContract ) {
+  public async store({ request, response }: HttpContextContract) {
     const validatedData = await request.validate(CreateTransactionValidator)
 
     const transaction = await Transaction.create({
@@ -40,7 +40,7 @@ export default class TransactionsController {
         payment.transaction_id = transaction.id
       })
       const payment = await Payment.createMany(payments)
-      return response.ok({data: {transaction: transaction, payment: payment}})
+      return response.ok({ data: { transaction: transaction, payment: payment } })
     }
 
     if (transaction.transactionType == "ORDER" && validatedData.order_item) {
@@ -48,7 +48,7 @@ export default class TransactionsController {
       orderItems.forEach((orderItem) => {
         orderItem.transaction_id = transaction.id
       })
-      
+
       const orderItemsQuery = await OrderItem.createMany(orderItems)
 
       orderItemsQuery.forEach(async (orderItem) => {
@@ -57,11 +57,11 @@ export default class TransactionsController {
         await inventory.save()
       })
 
-      return response.ok({data: {transaction: transaction, orderItem: orderItemsQuery}})
-    } 
+      return response.ok({ data: { transaction: transaction, orderItem: orderItemsQuery } })
+    }
   }
 
-  public async show({ params, response } : HttpContextContract ) {
+  public async show({ params, response }: HttpContextContract) {
     const transaction = await Transaction.query()
       .where('id', params.id)
       .preload('customer')
@@ -73,10 +73,10 @@ export default class TransactionsController {
       })
       .firstOrFail()
 
-    return response.ok({data: transaction})
+    return response.ok({ data: transaction })
   }
 
-  public async destroy({ params, response } : HttpContextContract ) {
+  public async destroy({ params, response }: HttpContextContract) {
     const transaction = await Transaction.findOrFail(params.id)
     const orderItems = await OrderItem.query()
       .where('transaction_id', params.id)
@@ -84,13 +84,13 @@ export default class TransactionsController {
     const payments = await Payment.query()
       .where('transaction_id', params.id)
 
-    if(orderItems.length > 0) {
+    if (orderItems.length > 0) {
       orderItems.forEach(async (orderItem) => {
         await orderItem.delete()
       });
     }
 
-    if(payments.length > 0) {
+    if (payments.length > 0) {
       payments.forEach(async (payment) => {
         await payment.delete()
       });
@@ -98,6 +98,6 @@ export default class TransactionsController {
 
     await transaction.delete()
 
-    return response.ok({message: "Transaction successfully deleted"})
+    return response.ok({ message: "Transaction successfully deleted" })
   }
 }
